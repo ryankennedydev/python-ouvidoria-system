@@ -1,0 +1,41 @@
+print("Olá, seja bem vindo à central de ouvidoria de reclamações Do GRUPO MURK ")
+
+reclamacoes = []
+posicao = 0
+
+while True: 
+    menu =  int(input("Escolha uma das opções abaixo: \n (1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar(4)atualizar(5)remover\n(6)sair"))
+    
+    if menu == 1:
+        cadastrar = input("Diga qual vai ser sua reclamação")
+        posicao += 1
+        if not cadastrar.isdigit():
+            reclamacoes.append(f"id {posicao}: {cadastrar}")
+        else:
+            print("Utilize apenas palavaras para cadastrar uma reclamação")
+
+    elif menu == 2:
+        print("Suas reclamações foram:")
+        for i in range(len(reclamacoes)):
+            print(reclamacoes[i])         
+    
+    elif menu == 3:
+        print(f"Atualmente suas reclamações foram feitas : {(len(reclamacoes))} vezes")
+        pesquisar = int(input("Digite o id:"))
+        print(reclamacoes[pesquisar - 1])
+    
+    elif menu == 4:
+        id_atualizar = int(input("Digite o id da reclamação que deseja alterar"))
+    
+        print(f"Sua reclamação de id: {id_atualizar} foi: {reclamacoes[id_atualizar - 1]}")
+        atualizar = input("Digite a frase que deseja atualizar: ")
+        reclamacoes[id_atualizar - 1] = atualizar
+        print("Sua reclamação foi atualizada")
+
+    elif menu == 5:
+        id_remover = int(input("Digite o id da reclamação que deseja alterar"))
+        reclamacoes.pop(id_remover - 1)
+        print("Reclamação removida com sucesso")
+
+    elif menu == 6:
+        break  
