@@ -4,7 +4,7 @@ reclamacoes = []
 posicao = 0
 
 while True: 
-    menu =  int(input("Escolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair"))
+    menu =  int(input("Escolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n"))
     
     if menu == 1:
         cadastrar = input("Diga qual vai ser sua reclamação:")
@@ -22,7 +22,7 @@ while True:
     elif menu == 3:
         print(f"Reclamações existentes {(len(reclamacoes))}")
         pesquisar = int(input("Digite o id:"))
-        if pesquisar >= 0 and pesquisar <= (len(reclamacoes)):
+        if pesquisar > 0 and pesquisar <= (len(reclamacoes)):
             print(reclamacoes[pesquisar - 1])
         else:
             print("ID DE RECLAMAÇÃO NÃO ENCONTRADO!")
