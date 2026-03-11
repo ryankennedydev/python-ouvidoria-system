@@ -4,15 +4,15 @@ reclamacoes = []
 posicao = 0
 
 while True: 
-    menu =  int(input("Escolha uma das opções abaixo: \n (1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar(4)atualizar(5)remover\n(6)sair"))
+    menu =  int(input("Escolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair"))
     
     if menu == 1:
-        cadastrar = input("Diga qual vai ser sua reclamação")
+        cadastrar = input("Diga qual vai ser sua reclamação:")
         posicao += 1
         if not cadastrar.isdigit():
-            reclamacoes.append(f"id {posicao}: {cadastrar}")
+            reclamacoes.append(f"{posicao}: {cadastrar}")
         else:
-            print("Utilize apenas palavaras para cadastrar uma reclamação")
+            print("Utilize apenas palavaras para cadastrar uma reclamação!")
 
     elif menu == 2:
         print("Suas reclamações foram:")
@@ -20,16 +20,19 @@ while True:
             print(reclamacoes[i])         
     
     elif menu == 3:
-        print(f"Atualmente suas reclamações foram feitas : {(len(reclamacoes))} vezes")
+        print(f"Reclamações existentes {(len(reclamacoes))}")
         pesquisar = int(input("Digite o id:"))
-        print(reclamacoes[pesquisar - 1])
+        if pesquisar >= 0 and pesquisar <= (len(reclamacoes)):
+            print(reclamacoes[pesquisar - 1])
+        else:
+            print("ID DE RECLAMAÇÃO NÃO ENCONTRADO!")
     
     elif menu == 4:
         id_atualizar = int(input("Digite o id da reclamação que deseja alterar"))
     
         print(f"Sua reclamação de id: {id_atualizar} foi: {reclamacoes[id_atualizar - 1]}")
         atualizar = input("Digite a frase que deseja atualizar: ")
-        reclamacoes[id_atualizar - 1] = atualizar
+        reclamacoes[id_atualizar - 1] = (f"{id_atualizar}: {atualizar}")
         print("Sua reclamação foi atualizada")
 
     elif menu == 5:
