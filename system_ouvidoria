@@ -8,14 +8,19 @@ while True:
     
     if menu == 1:
         cadastrar = input("Diga qual vai ser sua reclamação:")
-        posicao += 1
+
         if not cadastrar.isdigit():
+            posicao += 1
             reclamacoes.append(f"{posicao}: {cadastrar}")
+            
+        
         else:
             print("Utilize apenas palavaras para cadastrar uma reclamação!")
 
     elif menu == 2:
+        
         listar = int(input("======================\nLISTAR TODAS AS RECLAMÇÕES (1)\nCASO QUEIRA LISTAR ATE CERTO PONTO DIGITE (2)\n======================\n"))
+        
         if listar == 1:
             print("Suas reclamações foram:")
             for i in range(len(reclamacoes)):
@@ -24,7 +29,10 @@ while True:
             
             listar_ponto = int(input("======================\nDigite qual id da reclamação que você quer que percorra: "))
             for i in range(0,listar_ponto):
-                print(reclamacoes[i])    
+                print(reclamacoes[i])  
+                
+        if listar <1 or listar >2:
+            print("Escolha apenas as opções mostradas!")
     
     elif menu == 3:
         print(f"Reclamações existentes {(len(reclamacoes))}")
@@ -43,9 +51,17 @@ while True:
         print("======================\nSua reclamação foi atualizada======================\n")
 
     elif menu == 5:
+        
         id_remover = int(input("======================\nDigite o id da reclamação que deseja alterar"))
-        reclamacoes.pop(id_remover - 1)
+        if id_remover < len(reclamacoes) and id_remover >= 0:
+            reclamacoes.pop(id_remover - 1)
+        else:
+            print("ID de reclamação não encontrado em nosso sistema")
+        
         print("======================\nReclamação removida com sucesso======================\n")
 
     elif menu == 6:
-        break  
+        break
+
+    elif menu <0 or menu >6:
+        print("Escolha apenas as opções abaixo")  
