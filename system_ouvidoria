@@ -4,7 +4,7 @@ reclamacoes = []
 posicao = 0
 
 while True: 
-    menu =  int(input("Escolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n"))
+    menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n======================\n"))
     
     if menu == 1:
         cadastrar = input("Diga qual vai ser sua reclamação:")
@@ -15,14 +15,14 @@ while True:
             print("Utilize apenas palavaras para cadastrar uma reclamação!")
 
     elif menu == 2:
-        listar = int(input("DESEJA LISTAR TODAS AS RECLAMÇÕES (1) , CASO QUEIRA LISTAR ATE CERTO PONTO DIGITE (2): "))
+        listar = int(input("======================\nLISTAR TODAS AS RECLAMÇÕES (1)\nCASO QUEIRA LISTAR ATE CERTO PONTO DIGITE (2)\n======================\n"))
         if listar == 1:
             print("Suas reclamações foram:")
             for i in range(len(reclamacoes)):
                 print(reclamacoes[i - 1])  
         if listar == 2:
             
-            listar_ponto = int(input("Digite qual id da reclamação que você quer que percorra: "))
+            listar_ponto = int(input("======================\nDigite qual id da reclamação que você quer que percorra: "))
             for i in range(0,listar_ponto):
                 print(reclamacoes[i])    
     
@@ -35,17 +35,17 @@ while True:
             print("ID DE RECLAMAÇÃO NÃO ENCONTRADO!")
     
     elif menu == 4:
-        id_atualizar = int(input("Digite o id da reclamação que deseja alterar"))
+        id_atualizar = int(input("======================\nDigite o id da reclamação que deseja alterar"))
     
         print(f"Sua reclamação de id: {id_atualizar} foi: {reclamacoes[id_atualizar - 1]}")
-        atualizar = input("Digite a frase que deseja atualizar: ")
+        atualizar = input("======================\nDigite a frase que deseja atualizar: ")
         reclamacoes[id_atualizar - 1] = (f"{id_atualizar}: {atualizar}")
-        print("Sua reclamação foi atualizada")
+        print("======================\nSua reclamação foi atualizada======================\n")
 
     elif menu == 5:
-        id_remover = int(input("Digite o id da reclamação que deseja alterar"))
+        id_remover = int(input("======================\nDigite o id da reclamação que deseja alterar"))
         reclamacoes.pop(id_remover - 1)
-        print("Reclamação removida com sucesso")
+        print("======================\nReclamação removida com sucesso======================\n")
 
     elif menu == 6:
         break  
