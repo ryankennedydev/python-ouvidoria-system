@@ -1,34 +1,35 @@
-print("Olá, seja bem vindo à central de ouvidoria de reclamações MURK")
+#TRABALHO DE RYAN KENNEDY OLIVEIRA COSTA
+print("Olá, seja bem vindo à central de ouvidoria de reclamações")
 
 reclamacoes = []
 posicao = 0
-removidas = 0
+menu = 0
 
-while True: 
-    menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)listar reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n======================\n"))
+def cadastrar():
+    cadastrar = input("Diga qual vai ser sua reclamação:")
+    global posicao
+    if not cadastrar.isdigit():
+        posicao += 1
+        reclamacoes.append(f"{posicao}: {cadastrar}")
+        
+    else:
+        print("Utilize apenas palavaras para cadastrar uma reclamação!")
+
+def listar():
     
-    if menu == 1:
-        cadastrar = input("Diga qual vai ser sua reclamação:")
-
-        if not cadastrar.isdigit():
-            posicao += 1
-            reclamacoes.append(f"{posicao}: {cadastrar}")
-            
-        
-        else:
-            print("Utilize apenas palavaras para cadastrar uma reclamação!")
-
-    elif menu == 2:
-        
-        listar = int(input("======================\nLISTAR TODAS AS RECLAMÇÕES (1)\nCASO QUEIRA LISTAR ATE CERTO PONTO DIGITE (2)\n======================\n"))
+        listar = int(input("======================\nLISTAR TODAS AS RECLAMÇÕES (1)\nCASO QUEIRA LISTAR ATE CERTO PONTO DIGITE (2)\n"))
         
         if listar == 1:
+
             print("Suas reclamações foram:")
+
             for i in range(len(reclamacoes)):
                 print(reclamacoes[i])  
+
         elif listar == 2:
             
             listar_ponto = int(input("======================\nDigite qual id da reclamação que você quer que percorra: "))
+
             if listar_ponto > 0 and listar_ponto <= len(reclamacoes):
                 for i in range(0,listar_ponto):
                     print(reclamacoes[i])
@@ -39,53 +40,72 @@ while True:
         elif listar <1 or listar >2:
             print("Escolha apenas as opções mostradas!")
         
-    
-    elif menu == 3:
-        print(f"Reclamações existentes: {(len(reclamacoes))} dentre essas {removidas} reclamações foram removidas")
-        pesquisar = int(input("Digite o id:"))
-        if pesquisar > 0 and pesquisar <= (len(reclamacoes)):
-            print(reclamacoes[pesquisar - 1])
+def pesquisa():
+    print(f"Reclamações existentes: {(len(reclamacoes))}")
+
+    pesquisar = int(input("Digite o id:"))
+
+    if pesquisar > 0 and pesquisar <= (len(reclamacoes)):
+        print(reclamacoes[pesquisar - 1])
+    else:
+        print("ID DE RECLAMAÇÃO NÃO ENCONTRADO!")
+
+def atualizar():
+    id_atualizar = int(input("======================\nDigite o id da reclamação que deseja alterar"))
+
+    print(f"Sua reclamação de id: {id_atualizar} foi: {reclamacoes[id_atualizar - 1]}")
+    atualizar = input("======================\nDigite a frase que deseja atualizar: ")
+    reclamacoes[id_atualizar - 1] = (f"{id_atualizar}: {atualizar}")
+    print("======================\nSua reclamação foi atualizada")
+
+def remover():
+    remover = int(input("1- remover todas reclamações\n2-remover reclamação específica\n"))
+
+    if remover == 2:
+
+        id_remover = int(input("======================\nDigite o id da reclamação que deseja alterar"))
+        
+        if id_remover <= len(reclamacoes) and id_remover > 0:
+
+            reclamacoes[id_remover - 1] = (f"{id_remover}: Essa reclamação foi removida")
+
+            print("======================\nReclamação removida com sucesso======================\n")
+
         else:
-            print("ID DE RECLAMAÇÃO NÃO ENCONTRADO!")
+            print("ID de reclamação não encontrado em nosso sistema")
+    elif remover == 1:
+
+        confirm = input("Você tem certeza que deseja remover todas as reclamações existentes? (S/N)\n")
+        
+        if confirm.upper() == "S":
+            reset = 0
+            posicao = reset
+            while len(reclamacoes) > 0:
+                reclamacoes.pop()
+            print("OPERAÇÃO CONCLUÍDA COM SUCESSO!")
+        elif confirm.upper() == "N":
+            print("OPERAÇÃO CANCELADA COM SUCESSO!")
+while menu  !=6:
+    
+    menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)listar reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n"))
+    
+    if menu == 1:
+        cadastrar()
+    elif menu == 2:
+        listar()
+
+    elif menu == 3:
+        pesquisa()
     
     elif menu == 4:
-        id_atualizar = int(input("======================\nDigite o id da reclamação que deseja alterar"))
-        print(f"Sua reclamação de id: {id_atualizar} foi: {reclamacoes[id_atualizar - 1]}")
-        atualizar = input("======================\nDigite a frase que deseja atualizar: ")
-        reclamacoes[id_atualizar - 1] = (f"{id_atualizar}: {atualizar}")
-        print("======================\nSua reclamação foi atualizada\n======================\n")
+
+        atualizar()
 
     elif menu == 5:
 
-        remover = int(input("1- remover todas reclamações\n2-remover reclamação específica\n"))
-
-        if remover == 2:
-
-            id_remover = int(input("======================\nDigite o id da reclamação que deseja alterar"))
-            
-            if id_remover <= len(reclamacoes) and id_remover > 0:
-
-                reclamacoes[id_remover - 1] = (f"{id_remover}: Essa reclamação foi removida")
-                removidas +=1
-                print("======================\nReclamação removida com sucesso======================\n")
-
-            else:
-                print("ID de reclamação não encontrado em nosso sistema")
-        if remover == 1:
-
-            confirm = input("Você tem certeza que deseja remover todas as reclamações existentes? (S/N)\n")
-            
-            if confirm.upper() == "S":
-                removidas += 1
-                reset = 0
-                posicao = reset
-                while len(reclamacoes) > 0:
-                    reclamacoes.pop()
-                print("OPERAÇÃO CONCLUÍDA COM SUCESSO!")
-            if confirm.upper() == "N":
-                print("OPERAÇÃO CANCELADA COM SUCESSO!")
+        remover()
 
     elif menu == 6:
-        break
+        print("Saindo...")
     elif menu <0 or menu >6:
         print("Escolha apenas as opções abaixo") 
