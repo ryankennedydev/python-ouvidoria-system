@@ -5,7 +5,7 @@ posicao = 0
 removidas = 0
 
 while True: 
-    menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n======================\n"))
+    menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)listar reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n======================\n"))
     
     if menu == 1:
         cadastrar = input("Diga qual vai ser sua reclamação:")
