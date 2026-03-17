@@ -2,6 +2,7 @@ print("Olá, seja bem vindo à central de ouvidoria de reclamações Do GRUPO MU
 
 reclamacoes = []
 posicao = 0
+removidas = 0
 
 while True: 
     menu =  int(input("======================\nEscolha uma das opções abaixo: \n(1)cadastrar reclamação\n(2)lista reclamações\n(3)pesquisar\n(4)atualizar\n(5)remover\n(6)sair\n======================\n"))
@@ -40,7 +41,7 @@ while True:
         
     
     elif menu == 3:
-        print(f"Reclamações existentes: {(len(reclamacoes))}")
+        print(f"Reclamações existentes: {(len(reclamacoes))} dentre essas {removidas} reclamações foram removidas")
         pesquisar = int(input("Digite o id:"))
         if pesquisar > 0 and pesquisar <= (len(reclamacoes)):
             print(reclamacoes[pesquisar - 1])
@@ -56,11 +57,16 @@ while True:
         print("======================\nSua reclamação foi atualizada\n======================\n")
 
     elif menu == 5:
+
         remover = int(input("1- remover todas reclamações\n2-remover reclamação específica\n"))
+
         if remover == 2:
+
             id_remover = int(input("======================\nDigite o id da reclamação que deseja alterar"))
+            
             if id_remover <= len(reclamacoes) and id_remover > 0:
-                reclamacoes[id_remover - 1] = (f"{id_remover}: Reclamação removida")
+                reclamacoes[id_remover - 1] = (f"{id_remover}: Essa reclamação foi removida")
+                removidas +=1
                 print("======================\nReclamação removida com sucesso======================\n")
 
             else:
