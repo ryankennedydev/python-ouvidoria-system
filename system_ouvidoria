@@ -1,5 +1,4 @@
-#TRABALHO DE RYAN KENNEDY OLIVEIRA COSTA
-print("Olá, seja bem vindo à central de ouvidoria de reclamações")
+print("Olá, seja bem vindo à central de ouvidoria de reclamações MURK")
 
 reclamacoes = []
 posicao = 0
