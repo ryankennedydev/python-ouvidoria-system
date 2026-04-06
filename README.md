@@ -1,4 +1,4 @@
-# Meu primeiro projeto da faculdade de Sistema de Informação 
+# Sistema de ouvidoria em python
 
 Este projeto consiste no desenvolvimento de um Sistema de Ouvidoria para registro e gerenciamento de reclamações, utilizando a linguagem de programação Python. O objetivo é criar um programa simples que permita cadastrar, listar, pesquisar, atualizar e remover reclamações registradas pelos usuários.
 
@@ -35,4 +35,3 @@ O programa deverá possuir funcionalidades como:
 ● Opção para sair do sistema.
 
 
-#obs : Achei um desafio bom , pois utilizei a lógica para progamar e acho que consegui desenvolver um bom projeto para quem ta fazendo pela primeira vez um projeto de faculdade
